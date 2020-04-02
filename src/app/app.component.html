@@ -1,0 +1,34 @@
+<div class="header">
+  <a href="/" class="logo"><h1>my-helper</h1></a>
+  <ul>
+    <li><a target="_blank" href="https://github.com/pan9arus">
+      <img src="../assets/img/github-7-32.png" alt="github">
+    </a></li>
+    <li><a target="_blank" href="#">
+      <img src="../assets/img/linkedin-2-32.png" alt="linkedin">
+    </a></li>
+  </ul>
+</div>
+
+<aside class="sidebar">
+  <div class="sidebar-search">
+    <input class="search" type="text" placeholder="Поиск..." [(ngModel)]="search">
+  </div>
+  <div class="sidebar-create">
+    <button mat-raised-button (click)="addPost()">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
+  </div>
+  <ul class="sidebar-content">
+    <li class="post"
+        [ngClass]="{
+        programming: p.type === 'programming',
+        history: p.type === 'history',
+        other: p.type === 'other'
+        }"
+        *ngFor="let p of posts | search: search"
+    >
+      <h3>{{p.title}}</h3>
+      <p>{{p.text | limitWords: 10}}</p>
+      <small>Создано: {{p.date | date:'d/MM/yyyy в HH:mm'}}</small>
+    </li>
+  </ul>
+</aside>
