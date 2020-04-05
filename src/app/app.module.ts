@@ -7,23 +7,15 @@ import {TabsModule} from 'ngx-bootstrap/tabs';
 import {MatButtonModule} from '@angular/material/button';
 
 import {AppComponent} from './app.component';
-import {PostComponent} from './post/post.component';
-import {LexiconComponent} from './lexicon/lexicon.component';
 import {HttpClientModule} from '@angular/common/http';
-import { CreatePostComponent } from './create-post/create-post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SortByDatePipe } from './shared/pipes/sort-by-date.pipe';
-import { SearchPipe } from './shared/pipes/search.pipe';
-import { LimitWordsPipe } from './shared/pipes/limit-words.pipe';
+import { SearchPipe } from './pipes/search.pipe';
+import { LimitWordsPipe } from './pipes/limit-words.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent,
-    LexiconComponent,
-    CreatePostComponent,
-    SortByDatePipe,
     SearchPipe,
     LimitWordsPipe
   ],
