@@ -9,6 +9,7 @@ import {PostService} from './services/post.service';
 })
 
 export class AppComponent implements OnInit {
+
   posts: Post[] = [];
   search = '';
 
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   refresh() {
     this.postService.loadPosts()
       .subscribe(posts => {
-        this.posts = posts;
+        this.posts = posts.reverse();
       });
   }
 
@@ -39,4 +40,8 @@ export class AppComponent implements OnInit {
         this.refresh();
       });
   }
+
+  selectPost(p) {
+  }
+
 }
