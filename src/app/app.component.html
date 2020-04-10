@@ -35,9 +35,14 @@
     </ul>
   </aside>
 
-  <section class="content">
-    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, eveniet!</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa harum id molestiae, mollitia placeat quos tempora temporibus ut? Iure, odio!</p>
-    <small>Lorem ipsum dolor sit amet, consectetur.</small>
+  <section class="content" *ngIf="selPost">
+    <input type="text" placeholder="Введите название..." [(ngModel)]="selPost.title" (change)="changePost()">
+<!--    <h2>{{selPost.title}}</h2>-->
+    <p>{{selPost.text}}</p>
   </section>
+<!--  <section class="content" *ngIf="selPost">-->
+<!--    <input type="text" placeholder="Введите название..." [(ngModel)]="selPost.title" (change)="changePost()">-->
+<!--    <p>{{selPost.text}}</p>-->
+<!--  </section>-->
+
 </main>

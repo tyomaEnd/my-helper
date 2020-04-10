@@ -17,5 +17,9 @@ export class PostService {
   savePost(post: Post): Observable<Post> {
     return this.http.post<Post>('http://localhost:3000/posts', post);
   }
+
+  editPost(post: Post, id: number): Observable<Post> {
+    return this.http.put<Post>(`http://localhost:3000/posts/${id}`, post);
+  }
 }
 
