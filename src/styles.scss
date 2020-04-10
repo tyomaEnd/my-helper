@@ -172,6 +172,14 @@ main {
   .content {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
+    padding: 10px 20px;
+    input {
+      width: 100%;
+      font-size: 2.3rem;
+      font-weight: 600;
+      outline: 0;
+      border: 0 solid transparent;
+    }
   }
 }
 

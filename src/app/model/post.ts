@@ -4,4 +4,5 @@ export interface Post {
   text: string;
   type: string;
   date: Date;
+  id?: number;
 }
