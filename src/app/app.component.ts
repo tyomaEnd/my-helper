@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   posts: Post[] = [];
   search = '';
   selPost: Post;
+  editPost: boolean;
 
   constructor(private postService: PostService) {
   }
@@ -48,5 +49,9 @@ export class AppComponent implements OnInit {
 
   changePost() {
     this.postService.editPost(this.selPost, this.selPost.id).subscribe(() => {});
+  }
+
+  onEditPost() {
+    this.editPost = !this.editPost;
   }
 }
