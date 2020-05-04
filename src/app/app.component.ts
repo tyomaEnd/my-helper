@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   constructor(private postService: PostService) {
   }
 
-  refresh() {
+  refreshPosts() {
     this.postService.loadPosts()
       .subscribe(posts => {
         this.posts = posts.reverse();
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.refresh();
+    this.refreshPosts();
   }
 
   addPost() {
@@ -38,8 +38,8 @@ export class AppComponent implements OnInit {
       date: new Date()
     };
     this.postService.savePost(post)
-      .subscribe(result => {
-        this.refresh();
+      .subscribe(() => {
+        this.refreshPosts();
       });
   }
 
@@ -48,10 +48,11 @@ export class AppComponent implements OnInit {
   }
 
   changePost() {
-    this.postService.editPost(this.selPost, this.selPost.id).subscribe(() => {});
+    this.postService.editPost(this.selPost, this.selPost.id).subscribe(() => {
+    });
   }
 
-  onEditPost() {
+  toggleEditPost() {
     this.editPost = !this.editPost;
   }
 }
