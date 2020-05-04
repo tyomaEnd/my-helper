@@ -9,13 +9,15 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SearchPipe} from './pipes/search.pipe';
 import {LimitWordsPipe} from './pipes/limit-words.pipe';
+import { AutofocusDirective } from './directive/autofocus.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPipe,
-    LimitWordsPipe
+    LimitWordsPipe,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

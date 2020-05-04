@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class LimitWordsPipe implements PipeTransform {
 
-  transform(str: string, limit: number, trail = '...'): string {
+  transform(str: string, limit: number, trail = '…'): string {
     let result = str || '';
     if (str) {
       const words = str.split(/\s+/);

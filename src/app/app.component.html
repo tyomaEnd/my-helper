@@ -1,7 +1,8 @@
 <header class="header">
   <a href="/" class="logo"><h1>my-helper</h1></a>
+  <button mat-raised-button (click)="toggleEditPost()">Редактировать</button>
   <ul>
-    <li><a target="_blank" href="https://github.com/pan9arus">
+    <li><a target="_blank" href="https://github.com/tyomaEnd">
       <img src="../assets/img/github-7-32.png" alt="github">
     </a></li>
     <li><a target="_blank" href="#">
@@ -35,14 +36,14 @@
     </ul>
   </aside>
 
-  <section class="content" *ngIf="selPost">
-    <input type="text" placeholder="Введите название..." [(ngModel)]="selPost.title" (change)="changePost()">
-<!--    <h2>{{selPost.title}}</h2>-->
+  <section class="content" *ngIf="selPost && !editPost">
+    <h2>{{selPost.title}}</h2>
     <p>{{selPost.text}}</p>
   </section>
-<!--  <section class="content" *ngIf="selPost">-->
-<!--    <input type="text" placeholder="Введите название..." [(ngModel)]="selPost.title" (change)="changePost()">-->
-<!--    <p>{{selPost.text}}</p>-->
-<!--  </section>-->
+
+  <section class="content" *ngIf="selPost && editPost">
+    <input type="text" placeholder="Введите название..." appAutofocus [(ngModel)]="selPost.title" (change)="changePost()">
+    <p>{{selPost.text}}</p>
+  </section>
 
 </main>
