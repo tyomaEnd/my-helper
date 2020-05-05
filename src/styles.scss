@@ -177,16 +177,29 @@ main {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
     padding: 10px 20px;
-    input {
+    .inp-title {
       width: 100%;
       font: 600 2.3rem Roboto;
+      margin: 0 0 5px;
       outline: 0;
       border: 0 solid transparent;
     }
+    .inp-text {
+      width: 100%;
+      font: 400 1.1rem Roboto;
+      padding: 0;
+      outline: 0;
+      border: 0 solid transparent;
+      overflow:hidden;
+    }
     h2 {
       font: 600 2.3rem Roboto;
-      margin: 0;
+      margin: 0 0 5px;
       padding: 1px 0;
+    }
+    p {
+      font: 400 1.1rem Roboto;
+      margin: 0;
     }
   }
 }
