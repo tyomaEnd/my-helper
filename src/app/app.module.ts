@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 
 import {QuillModule} from 'ngx-quill';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -24,7 +25,8 @@ import { AutofocusDirective } from './directive/autofocus.directive';
     FormsModule,
     HttpClientModule,
     QuillModule.forRoot(),
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -42,8 +42,21 @@
   </section>
 
   <section class="content" *ngIf="selPost && editPost">
-    <input type="text" placeholder="Введите название..." appAutofocus [(ngModel)]="selPost.title" (change)="changePost()">
-    <p>{{selPost.text}}</p>
+    <input
+      class="inp-title"
+      type="text"
+      placeholder="Введите название…"
+      appAutofocus
+      [(ngModel)]="selPost.title"
+      (change)="changePost()"
+    >
+    <textarea
+      class="inp-text"
+      placeholder="Введите текст…"
+      cdkTextareaAutosize
+      [(ngModel)]="selPost.text"
+      (change)="changePost()"
+    ></textarea>
   </section>
 
 </main>
