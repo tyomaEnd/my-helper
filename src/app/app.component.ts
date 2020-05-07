@@ -47,6 +47,13 @@ export class AppComponent implements OnInit {
     this.selPost = p;
   }
 
+  removePost(id: number) {
+    this.postService.removePost(id).subscribe(() => {
+      // this.posts = this.posts.filter(p => p.id !== id);
+      this.refreshPosts();
+    });
+  }
+
   changePost() {
     this.postService.editPost(this.selPost, this.selPost.id).subscribe(() => {
     });

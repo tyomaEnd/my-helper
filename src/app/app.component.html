@@ -3,10 +3,10 @@
   <button mat-raised-button (click)="toggleEditPost()">Редактировать</button>
   <ul>
     <li><a target="_blank" href="https://github.com/tyomaEnd">
-      <img src="../assets/img/github-7-32.png" alt="github">
+      <img src="../assets/img/github-7-32.png" alt="github link">
     </a></li>
     <li><a target="_blank" href="#">
-      <img src="../assets/img/linkedin-2-32.png" alt="linkedin">
+      <img src="../assets/img/linkedin-2-32.png" alt="linkedin link">
     </a></li>
   </ul>
 </header>
@@ -21,17 +21,20 @@
     </div>
     <ul class="sidebar-content">
       <li *ngFor="let p of posts | search: search"
-          class="post"
           [ngClass]="{
         programming: p.type === 'programming',
         history: p.type === 'history',
         other: p.type === 'other'
         }"
-          (click)="selectPost(p)"
       >
-        <h3>{{p.title}}</h3>
-        <p>{{p.text | limitWords: 10}}</p>
-        <small>Создано: {{p.date | date:'dd/MM/yyyy в HH:mm'}}</small>
+        <div class="post" (click)="selectPost(p)">
+          <h3>{{p.title}}</h3>
+          <p>{{p.text | limitWords: 10}}</p>
+          <small>Создано: {{p.date | date:'dd/MM/yyyy в HH:mm'}}</small>
+        </div>
+        <div class="img-delete" (click)="removePost(p.id)">
+          <img src="../assets/img/clear.png" alt="delete post">
+        </div>
       </li>
     </ul>
   </aside>

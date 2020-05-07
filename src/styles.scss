@@ -72,6 +72,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   padding-top: 55px;
+
   .sidebar {
     position: sticky;
     top: 55px;
@@ -148,9 +149,16 @@ main {
         }
       }
 
-      .post {
+      li {
+        display: flex;
+        justify-content: space-between;
         border-bottom: $border;
-        padding: 5px 19px 0 20px;
+      }
+
+
+      .post {
+        width: 100%;
+        padding: 5px 0 0 10px;
         list-style: none;
         cursor: pointer;
         @media (max-width: 376px) {
@@ -170,6 +178,19 @@ main {
           border: 1px solid;
         }
       }
+
+      .img-delete {
+        width: 16px;
+        height: 16px;
+        padding: 5px 5px 0 0;
+        img {
+          transition: all .25s;
+          &:active {
+            transform: scale(.7);
+          }
+        }
+
+      }
     }
   }
 
@@ -177,6 +198,18 @@ main {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
     padding: 10px 20px;
+
+    h2 {
+      font: 600 2.3rem Roboto;
+      margin: 0 0 5px;
+      padding: 1px 0;
+    }
+
+    p {
+      font: 400 1.1rem Roboto;
+      margin: 0;
+    }
+
     .inp-title {
       width: 100%;
       font: 600 2.3rem Roboto;
@@ -184,36 +217,14 @@ main {
       outline: 0;
       border: 0 solid transparent;
     }
+
     .inp-text {
       width: 100%;
       font: 400 1.1rem Roboto;
       padding: 0;
       outline: 0;
       border: 0 solid transparent;
-      overflow:hidden;
-    }
-    h2 {
-      font: 600 2.3rem Roboto;
-      margin: 0 0 5px;
-      padding: 1px 0;
-    }
-    p {
-      font: 400 1.1rem Roboto;
-      margin: 0;
+      overflow: hidden;
     }
   }
 }
-
-//label {
-//  font-weight: 600;
-//}
-//
-//input {
-//  &.ng-invalid.ng-touched {
-//    outline: auto #f33432;
-//  }
-//
-//  &.ng-valid.ng-touched {
-//    outline: auto #0eca0e;
-//  }
-//}
