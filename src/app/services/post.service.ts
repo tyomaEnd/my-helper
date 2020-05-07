@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Post} from '../model/post';
 import {Observable} from 'rxjs';
@@ -8,7 +8,8 @@ import {Observable} from 'rxjs';
 })
 export class PostService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   loadPosts(): Observable<Post[]> {
     return this.http.get<Post[]>('http://localhost:3000/posts');
@@ -21,5 +22,9 @@ export class PostService {
   editPost(post: Post, id: number): Observable<Post> {
     return this.http.put<Post>(`http://localhost:3000/posts/${id}`, post);
   }
+
+  removePost(id: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:3000/posts/${id}`);
+}
 }
 
