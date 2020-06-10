@@ -40,6 +40,8 @@ export class AppComponent implements OnInit {
     this.postService.savePost(post)
       .subscribe(() => {
         this.refreshPosts();
+        this.selPost = post;
+        this.editPost = true;
       });
   }
 
@@ -51,6 +53,7 @@ export class AppComponent implements OnInit {
     this.postService.removePost(id).subscribe(() => {
       // this.posts = this.posts.filter(p => p.id !== id);
       this.refreshPosts();
+      this.selPost = null;
     });
   }
 
