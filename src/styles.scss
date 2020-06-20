@@ -227,5 +227,14 @@ main {
       border: 0 solid transparent;
       overflow: hidden;
     }
+
+    .txt {
+      padding: 20px 0;
+      text-align: center;
+      font: 300 2rem Roboto;
+      img {
+        width: 70%;
+      }
+    }
   }
 }

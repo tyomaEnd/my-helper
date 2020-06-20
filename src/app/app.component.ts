@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   search = '';
   selPost: Post;
   editPost: boolean;
+  type = new Set<string>();
 
   constructor(private postService: PostService) {
   }
@@ -47,11 +48,11 @@ export class AppComponent implements OnInit {
 
   selectPost(p) {
     this.selPost = p;
+    this.editPost = false;
   }
 
   removePost(id: number) {
     this.postService.removePost(id).subscribe(() => {
-      // this.posts = this.posts.filter(p => p.id !== id);
       this.refreshPosts();
       this.selPost = null;
     });
@@ -64,5 +65,17 @@ export class AppComponent implements OnInit {
 
   toggleEditPost() {
     this.editPost = !this.editPost;
+  }
+
+  filterType(key: string) {
+    if (this.type.has(key)) {
+      this.type.delete(key);
+    } else {
+      this.type.add(key);
+    }
+  }
+
+  join(set: Set<string>): string {
+    return Array.from(set.keys()).join(',');
   }
 }
