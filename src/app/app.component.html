@@ -21,7 +21,8 @@
       <button mat-raised-button (click)="addPost()">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
     </div>
 
-    <div class="sidebar-filter">
+    <button class="btn-filter" mat-raised-button (click)="visible = !visible">Фильтр</button>
+    <div class="sidebar-filter" *ngIf="visible">
       <mat-checkbox (change)="filterType('programming')">Программирование</mat-checkbox>
       <mat-checkbox (change)="filterType('history')">История</mat-checkbox>
       <mat-checkbox (change)="filterType('other')">Другое</mat-checkbox>
