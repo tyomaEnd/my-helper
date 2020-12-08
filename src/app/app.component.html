@@ -16,11 +16,20 @@
     <div class="sidebar-search">
       <input class="search" type="search" placeholder="Поиск..." [(ngModel)]="search">
     </div>
+
     <div class="sidebar-create">
       <button mat-raised-button (click)="addPost()">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
     </div>
+
+    <button class="btn-filter" mat-raised-button (click)="visible = !visible">Фильтр</button>
+    <div class="sidebar-filter" *ngIf="visible">
+      <mat-checkbox (change)="filterType('programming')">Программирование</mat-checkbox>
+      <mat-checkbox (change)="filterType('history')">История</mat-checkbox>
+      <mat-checkbox (change)="filterType('other')">Другое</mat-checkbox>
+    </div>
+
     <ul class="sidebar-content">
-      <li *ngFor="let p of posts | search: search"
+      <li *ngFor="let p of posts | search: search | filter: join(type)"
           [ngClass]="{
         programming: p.type === 'programming',
         history: p.type === 'history',
@@ -38,6 +47,17 @@
       </li>
     </ul>
   </aside>
+
+  <section class="content" *ngIf="!selPost && !editPost">
+    <p class="txt">Добро пожаловать в приложение <b>My-helper</b>.
+      <br>
+      Это учебный проект написанный на фреймворке <span style="color: red; font-family: monospace">Angular</span>
+      <br>
+      Для начала работы выберите заметку или создайте новую.
+      <br>
+      <img src="../assets/img/cat.jpg" alt="cat">
+    </p>
+  </section>
 
   <section class="content" *ngIf="selPost && !editPost">
     <h2>{{selPost.title}}</h2>

@@ -5,7 +5,7 @@ import {PostService} from './services/post.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 
 export class AppComponent implements OnInit {
@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   search = '';
   selPost: Post;
   editPost: boolean;
+  type = new Set<string>();
+  visible = false;
 
   constructor(private postService: PostService) {
   }
@@ -40,17 +42,20 @@ export class AppComponent implements OnInit {
     this.postService.savePost(post)
       .subscribe(() => {
         this.refreshPosts();
+        this.selPost = post;
+        this.editPost = true;
       });
   }
 
   selectPost(p) {
     this.selPost = p;
+    this.editPost = false;
   }
 
   removePost(id: number) {
     this.postService.removePost(id).subscribe(() => {
-      // this.posts = this.posts.filter(p => p.id !== id);
       this.refreshPosts();
+      this.selPost = null;
     });
   }
 
@@ -61,5 +66,17 @@ export class AppComponent implements OnInit {
 
   toggleEditPost() {
     this.editPost = !this.editPost;
+  }
+
+  filterType(key: string) {
+    if (this.type.has(key)) {
+      this.type.delete(key);
+    } else {
+      this.type.add(key);
+    }
+  }
+
+  join(set: Set<string>): string {
+    return Array.from(set.keys()).join(',');
   }
 }
