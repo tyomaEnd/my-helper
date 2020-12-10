@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnInit, ViewChild} from '@angular/core';
 import {Post} from './model/post';
 import {PostService} from './services/post.service';
+import {ModalComponent} from './modal/modal.component';
+import {RefDirective} from './directive/ref.directive';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,8 @@ import {PostService} from './services/post.service';
 
 export class AppComponent implements OnInit {
 
+  @ViewChild(RefDirective) refDir: RefDirective;
+
   posts: Post[] = [];
   search = '';
   selPost: Post;
@@ -17,7 +21,10 @@ export class AppComponent implements OnInit {
   type = new Set<string>();
   visible = false;
 
-  constructor(private postService: PostService) {
+  constructor(
+    private postService: PostService,
+    private resolver: ComponentFactoryResolver
+  ) {
   }
 
   refreshPosts() {
@@ -52,13 +59,6 @@ export class AppComponent implements OnInit {
     this.editPost = false;
   }
 
-  removePost(id: number) {
-    this.postService.removePost(id).subscribe(() => {
-      this.refreshPosts();
-      this.selPost = null;
-    });
-  }
-
   changePost() {
     this.postService.editPost(this.selPost, this.selPost.id).subscribe(() => {
     });
@@ -78,5 +78,23 @@ export class AppComponent implements OnInit {
 
   join(set: Set<string>): string {
     return Array.from(set.keys()).join(',');
+  }
+
+  showModalDelete(id: number) {
+    const modalFactory = this.resolver.resolveComponentFactory(ModalComponent);
+    this.refDir.containerRef.clear();
+
+    const component = this.refDir.containerRef.createComponent(modalFactory);
+
+    component.instance.shut.subscribe(() => {
+      this.refDir.containerRef.clear();
+    });
+
+    component.instance.accept.subscribe(() => {
+      this.refDir.containerRef.clear();
+      this.postService.removePost(id).subscribe(() => {
+        this.refreshPosts();
+      });
+    });
   }
 }

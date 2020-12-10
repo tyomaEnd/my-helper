@@ -1,0 +1,9 @@
+<div class="backdrop"></div>
+
+<div class="modal">
+  <nav class="navbar">
+    <h1>Вы действительно хотите удалить заметку?</h1>
+  </nav>
+  <button mat-raised-button (click)="accept.emit()">Да</button>
+  <button class="btn-close" mat-raised-button (click)="shut.emit()">Нет</button>
+</div>

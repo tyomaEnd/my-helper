@@ -17,10 +17,6 @@
       <input class="search" type="search" placeholder="Поиск..." [(ngModel)]="search">
     </div>
 
-    <div class="sidebar-create">
-      <button mat-raised-button (click)="addPost()">ДОБАВИТЬ НОВУЮ ЗАПИСЬ</button>
-    </div>
-
     <button class="btn-filter" mat-raised-button (click)="visible = !visible">Фильтр</button>
     <div class="sidebar-filter" *ngIf="visible">
       <mat-checkbox (change)="filterType('programming')">Программирование</mat-checkbox>
@@ -29,6 +25,9 @@
     </div>
 
     <ul class="sidebar-content">
+      <li>
+          <button class="create-post" mat-raised-button (click)="addPost()">+ ДОБАВИТЬ ЗАМЕТКУ</button>
+      </li>
       <li *ngFor="let p of posts | search: search | filter: join(type)"
           [ngClass]="{
         programming: p.type === 'programming',
@@ -41,7 +40,7 @@
           <p>{{p.text | limitWords: 10}}</p>
           <small>Создано: {{p.date | date:'dd/MM/yyyy в HH:mm'}}</small>
         </div>
-        <div class="img-delete" (click)="removePost(p.id)">
+        <div class="img-delete" (click)="showModalDelete(p.id)">
           <img src="../assets/img/clear.png" alt="delete post">
         </div>
       </li>
@@ -83,3 +82,5 @@
   </section>
 
 </main>
+
+<ng-template appRef></ng-template>

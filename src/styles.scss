@@ -103,26 +103,11 @@ main {
       }
     }
 
-    .sidebar-create {
-      border-bottom: $border;
-
-      button {
-        width: 100%;
-        font-size: 15px;
-        padding: 5px 0;
-        border-radius: 0;
-        box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
-
-        &:hover {
-          background-color: #efeff1;
-        }
-      }
-    }
-
     .btn-filter {
       width: 100%;
       font-size: 15px;
       border-radius: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, .15);
 
       &:hover {
         background-color: #efeff1;
@@ -132,13 +117,12 @@ main {
     .sidebar-filter {
       display: grid;
       padding: 5px 0 0 10px;
-      border: 1px solid;
     }
 
     .sidebar-content {
       overflow-y: auto;
       padding: 0;
-      height: calc(100vh - 200px);
+      height: calc(100vh - 153px);
       margin: 0;
 
       .programming {
@@ -171,6 +155,18 @@ main {
         border-bottom: $border;
       }
 
+      .create-post {
+        width: 100%;
+        padding: 25px 20px;
+        font-size: 24px;
+        font-family: initial;
+        border: 1px solid rgba(0, 0, 0, .15);
+        color: #aba7a7;
+
+        &:hover {
+          background-color: #efeff1;
+        }
+      }
 
       .post {
         width: 100%;

@@ -13,6 +13,8 @@ import {SearchPipe} from './pipes/search.pipe';
 import {LimitWordsPipe} from './pipes/limit-words.pipe';
 import { AutofocusDirective } from './directive/autofocus.directive';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ModalComponent } from './modal/modal.component';
+import {RefDirective} from './directive/ref.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     SearchPipe,
     LimitWordsPipe,
     AutofocusDirective,
-    FilterPipe
+    FilterPipe,
+    ModalComponent,
+    RefDirective
   ],
   imports: [
     BrowserModule,
