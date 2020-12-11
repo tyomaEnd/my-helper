@@ -26,7 +26,7 @@
 
     <ul class="sidebar-content">
       <li>
-          <button class="create-post" mat-raised-button (click)="addPost()">+ ДОБАВИТЬ ЗАМЕТКУ</button>
+        <button class="create-post" mat-raised-button (click)="addPost()">+ ДОБАВИТЬ ЗАМЕТКУ</button>
       </li>
       <li *ngFor="let p of posts | search: search | filter: join(type)"
           [ngClass]="{
@@ -60,7 +60,7 @@
 
   <section class="content" *ngIf="selPost && !editPost">
     <h2>{{selPost.title}}</h2>
-    <p>{{selPost.text}}</p>
+    <pre>{{selPost.text}}</pre>
   </section>
 
   <section class="content" *ngIf="selPost && editPost">

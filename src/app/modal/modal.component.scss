@@ -4,19 +4,50 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, .6);
 }
 
 .modal {
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 30vh;
+  left: 35vw;
+  width: 30vw;
+  padding: 16px;
   background: #fff;
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  transform: translate(-50%, 0);
   box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  .btn-accept {
+    width: 50%;
+  }
 
   .btn-close {
-    float: right;
+    position: absolute;
+    top: -36px;
+    right: -36px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: transparent;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-image: url("cancel_close.png");
+    font-size: 0;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+    outline: 2px dotted #afb3b9;
+    outline-offset: 2px;
+
+    & {
+      transition: all .1s;
+
+      &:active {
+        transform: scale(.8);
+      }
+    }
   }
 }

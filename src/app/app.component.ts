@@ -86,15 +86,16 @@ export class AppComponent implements OnInit {
 
     const component = this.refDir.containerRef.createComponent(modalFactory);
 
-    component.instance.shut.subscribe(() => {
+    component.instance.accept.subscribe(() => {
+      this.postService.removePost(id).subscribe(() => {
+        this.refreshPosts();
+        this.selectPost(null);
+      });
       this.refDir.containerRef.clear();
     });
 
-    component.instance.accept.subscribe(() => {
+    component.instance.closeModal.subscribe(() => {
       this.refDir.containerRef.clear();
-      this.postService.removePost(id).subscribe(() => {
-        this.refreshPosts();
-      });
     });
   }
 }
