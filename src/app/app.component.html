@@ -1,20 +1,21 @@
 <header class="header">
-  <a href="/" class="logo"><h1>my-helper</h1></a>
-  <button mat-raised-button (click)="toggleEditPost()">Редактировать</button>
-  <ul>
-    <li><a target="_blank" href="https://github.com/tyomaEnd">
-      <img src="../assets/img/github-7-32.png" alt="GitHub link">
-    </a></li>
-    <li><a target="_blank" href="#">
-      <img src="../assets/img/linkedin-2-32.png" alt="Linkedin link">
-    </a></li>
-  </ul>
+  <div class="container-header">
+    <a href="/" class="logo">my-helper</a>
+    <ul class="links-soc-net">
+      <li><a target="_blank" href="https://github.com/tyomaEnd">
+        <img src="../assets/img/github-7-32.png" alt="GitHub link">
+      </a></li>
+      <li><a target="_blank" href="#">
+        <img src="../assets/img/linkedin-2-32.png" alt="Linkedin link">
+      </a></li>
+    </ul>
+  </div>
 </header>
 
-<main>
+<main class="container">
   <aside class="sidebar">
     <div class="sidebar-search">
-      <input class="search" type="search" placeholder="Поиск..." [(ngModel)]="search">
+      <input title="Поиск заметок" class="search" type="search" placeholder="Поиск..." [(ngModel)]="search">
     </div>
 
     <button class="btn-filter" mat-raised-button (click)="visible = !visible">Фильтр</button>
@@ -23,22 +24,19 @@
       <mat-checkbox (change)="filterType('history')">История</mat-checkbox>
       <mat-checkbox (change)="filterType('other')">Другое</mat-checkbox>
     </div>
-
-    <ul class="sidebar-content">
-      <li>
-        <button class="create-post" mat-raised-button (click)="addPost()">+ ДОБАВИТЬ ЗАМЕТКУ</button>
-      </li>
-      <li *ngFor="let p of posts | search: search | filter: join(type)"
+    <button class="create-post-btn" mat-raised-button (click)="addPost()">+ ДОБАВИТЬ ЗАМЕТКУ</button>
+    <ul class="note-list">
+      <li class="note" *ngFor="let p of posts | search: search | filter: join(type)"
           [ngClass]="{
         programming: p.type === 'programming',
         history: p.type === 'history',
         other: p.type === 'other'
         }"
       >
-        <div class="post" (click)="selectPost(p)">
-          <h3>{{p.title}}</h3>
-          <p>{{p.text | limitWords: 10}}</p>
-          <small>Создано: {{p.date | date:'dd/MM/yyyy в HH:mm'}}</small>
+        <div class="note-content" (click)="selectPost(p)">
+          <h3 class="note-title">{{p.title}}</h3>
+          <p class="note-text">{{p.text | limitWords: 10}}</p>
+          <time class="note-time">Создано: {{p.date | date:'dd/MM/yyyy в HH:mm'}}</time>
         </div>
         <div class="img-delete" (click)="showModalDelete(p.id)">
           <img src="../assets/img/clear.png" alt="delete post">
@@ -61,12 +59,14 @@
   <section class="content" *ngIf="selPost && !editPost">
     <h2>{{selPost.title}}</h2>
     <pre>{{selPost.text}}</pre>
+    <button mat-raised-button (click)="toggleEditPost()">Редактировать</button>
   </section>
 
   <section class="content" *ngIf="selPost && editPost">
     <input
       class="inp-title"
       type="text"
+      title="Поле для ввода названия заметки"
       placeholder="Введите название…"
       appAutofocus
       [(ngModel)]="selPost.title"
@@ -74,11 +74,13 @@
     >
     <textarea
       class="inp-text"
+      title="Поле для ввода текста заметки"
       placeholder="Введите текст…"
       cdkTextareaAutosize
       [(ngModel)]="selPost.text"
       (change)="changePost()"
     ></textarea>
+    <button mat-raised-button (click)="toggleEditPost()">Редактировать</button>
   </section>
 
 </main>
